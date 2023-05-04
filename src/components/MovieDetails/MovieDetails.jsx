@@ -1,9 +1,15 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 
 function MovieDetails() {
 
     const movies = useSelector(store => store.movies);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch({ type: 'FETCH_DETAILS' });
+    }, []);
 
     return (
         <>
