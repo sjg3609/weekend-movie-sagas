@@ -4,20 +4,20 @@ import { useEffect } from 'react';
 
 function MovieDetails() {
 
-    const movies = useSelector(store => store.movies);
+    const details = useSelector(store => store.details);
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch({ type: 'FETCH_DETAILS' });
-    }, []);
+    // useEffect(() => {
+    //     dispatch({ type: 'FETCH_DETAILS' });
+    // }, []);
 
     return (
         <>
             <h3>Movie Details</h3>
             {
-                movies.map(movie => {
+                details.map(movie => {
                     <div className="movieDetails" key={movie.id}>
-                         <h4>{movies.description}</h4>
+                         <h4>{details.description}</h4>
                     </div>
                     
                 })
