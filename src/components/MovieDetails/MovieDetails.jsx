@@ -33,16 +33,12 @@ function MovieDetails() {
         <>
             <h3>Movie Details</h3>
             <section className="details">
-                {movies.map(movie => {
-                    return (
-                        <div key={movie.id} >
-                            <h3>{movie.title}</h3>
-                            <img src={movie.poster} alt={movie.title}/>
-                            <h4>{movie.description}</h4>
+                        <div key={movies.id} >
+                            <h3>{movies.title}</h3>
+                            <img src={movies.poster} alt={movies.title}/>
+                            <h4>{movies.description}</h4>
                             <h4>{genres.name}</h4>
-                        </div>
-                    );
-                })}
+                        </div>   
             </section>
             <button onClick={previousPage}>Back to List</button>
         </>

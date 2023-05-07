@@ -8,27 +8,29 @@ function MovieList() {
     const dispatch = useDispatch();
     const movies = useSelector(store => store.movies);
     const history = useHistory();
+    // const { id } = useParams();
     
 
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
 
-    const movieDetails = () => {
+    const movieDetails = (id) => {
         console.log('In movieDetails');
-        history.push('/details');
-       dispatch({ type: 'SET_DETAILS' });
+        history.push(`/details/${id}`);
+    //    dispatch({ type: 'SET_DETAILS' });
     }
 
     return (
         <main>
             <h1>MovieList</h1>
             <section className="movies">
-                {movies.map(movie => {
+                {
+                movies.map(movie => {
                     return (
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
-                            <img src={movie.poster} alt={movie.title} onClick={movieDetails}/>
+                            <img src={movie.poster} alt={movie.title} onClick={() => movieDetails(movie.id)}/>
                         </div>
                     );
                 })}
