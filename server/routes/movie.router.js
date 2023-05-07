@@ -18,15 +18,15 @@ router.get('/', (req, res) => {
 
 // Commenting this out becausde I don't think it's necessary anymore
 
-// router.get('/description', (req, res) => {
-//   const queryText = 'SELECT movies.description FROM movies WHERE id=$1';
-//   pool.query(queryText, [req.params.id])
-//     .then((result) => { res.send(result.rows); })
-//     .catch((err) => {
-//       console.log('Error completing SELECT movie query', err);
-//       res.sendStatus(500);
-//     });
-// });
+router.get('/description/:id', (req, res) => {
+  const queryText = 'SELECT movies.description FROM movies WHERE id=$1';
+  pool.query(queryText, [req.params.id])
+    .then((result) => { res.send(result.rows); })
+    .catch((err) => {
+      console.log('Error completing SELECT movie query', err);
+      res.sendStatus(500);
+    });
+});
 
 
 router.post('/', (req, res) => {

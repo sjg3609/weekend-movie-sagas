@@ -4,26 +4,41 @@ import { useEffect } from 'react';
 
 
 function MovieDetails() {
-
-    const details = useSelector(store => store.details);
+    // Don't think details is a necessary reducer anymore. We can just use the genres and movies reducers to get what we
+    // const details = useSelector(store => store.details);
     const movies = useSelector(store => store.movies);
     const genres = useSelector(store => store.genres);
+    const { id } = useParams();
+    const movie = movies.find((movie) => movie.id === Number(id));
+    console.log(id);
+
     const dispatch = useDispatch();
     const history = useHistory();
-    const { id } = useParams();
+
+
+    // Do not need to make a separate function to retrieve the details, I believe, either
 
     // const fetchDetails = () => {
     //     const action = { type: 'FETCH_DETAILS', payload: details.id};
     //     dispatch(action);
     // }
 
-    const fetchDetails = () => {
-        dispatch({ type: 'FETCH_DETAILS '});
-    }
+    // const fetchDetails = () => {
+    //     dispatch({ type: 'FETCH_DETAILS' });
+    // }
 
     useEffect(() => {
-        fetchDetails();
+        dispatch({ type: 'FETCH_MOVIES' });
     }, []);
+
+    // if (movies.length != 0) {
+    //     for (let i = 0; movies.length > 0; i++) {
+    //         if (movies[i].id === id) {
+    //             movie = movies[i]
+    //             console.log(movie);
+    //         }
+    //     }
+    // }
 
     const previousPage = () => {
         history.goBack('/');
@@ -31,16 +46,25 @@ function MovieDetails() {
 
     return (
         <>
-            <h3>Movie Details</h3>
-            <section className="details">
-                        <div key={movies.id} >
-                            <h3>{movies.title}</h3>
-                            <img src={movies.poster} alt={movies.title}/>
-                            <h4>{movies.description}</h4>
-                            <h4>{genres.name}</h4>
-                        </div>   
-            </section>
+            <h3>Movie Details {id}</h3>
             <button onClick={previousPage}>Back to List</button>
+            <h4>{genres.name}</h4>
+            {
+                movies.length === 0 ? (
+
+                    <div>Loading..</div>
+
+
+                ) : (
+                    <div key={movie.id} >
+                        <h3>{movie.title}</h3>
+                        <img src={movie.poster} alt={movie.title} />
+                        <h4>{movie.description}</h4>
+                    </div>
+                )
+            }
+
+
         </>
     )
 }
