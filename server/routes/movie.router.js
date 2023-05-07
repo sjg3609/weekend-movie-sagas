@@ -18,8 +18,8 @@ router.get('/', (req, res) => {
 
 // Commenting this out becausde I don't think it's necessary anymore
 
-// router.get('/description/:id', (req, res) => {
-//   const queryText = 'SELECT movie.description FROM movies WHERE id=$1';
+// router.get('/description', (req, res) => {
+//   const queryText = 'SELECT movies.description FROM movies WHERE id=$1';
 //   pool.query(queryText, [req.params.id])
 //     .then((result) => { res.send(result.rows); })
 //     .catch((err) => {
