@@ -6,15 +6,21 @@ import { useEffect } from 'react';
 function MovieDetails() {
 
     const details = useSelector(store => store.details);
+    const movies = useSelector(store => store.movies);
     const dispatch = useDispatch();
     const history = useHistory();
 
 
 
     const fetchDetails = () => {
-        const action = { type: 'FETCH_DETAILS', payload: details};
+        const action = { type: 'FETCH_DETAILS', payload: details.id};
         dispatch(action);
     }
+
+    // const fetchDetails = () => {
+    //     const action = { type: 'FETCH_MOVIES' };
+    //     dispatch(action);
+    // }
 
     useEffect(() => {
         fetchDetails();
