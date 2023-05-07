@@ -16,7 +16,7 @@ function MovieList() {
     const movieDetails = () => {
         console.log('In movieDetails');
         history.push('/details');
-        dispatch('FETCH_DETAILS');
+       // dispatch('FETCH_DETAILS');
     }
 
     return (
@@ -28,6 +28,7 @@ function MovieList() {
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
                             <img src={movie.poster} alt={movie.title} onClick={movieDetails}/>
+                            <h4>{movie.description}</h4>
                         </div>
                     );
                 })}
