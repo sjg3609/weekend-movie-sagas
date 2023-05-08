@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
-import { Container, Grid, Paper } from '@mui/material';
-import { experimentalStyled as styled } from '@mui/material/styles';
+import { Container, Grid } from '@mui/material';
 import './MovieList.css'
 import MovieItem from './MovieItem';
 
@@ -11,24 +9,18 @@ function MovieList() {
     const dispatch = useDispatch();
     const movies = useSelector(store => store.movies);
 
-    // const { id } = useParams();
-
-
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
 
-
-
- 
 
     return (
         <main>
             <Container fixed>
                 <h1>MovieList</h1>
                 <Grid container
-                    columnSpacing={4}
-                    rowSpacing={2}
+                    columnSpacing={8}
+                    rowSpacing={4}
                     direction="row"
                     justifyContent="flex-start"
                     alignItems="center"
@@ -37,14 +29,10 @@ function MovieList() {
                         return (
                             <MovieItem movie={movie} />
                         )
-
                     })}
                 </Grid>
-
             </Container>
-
         </main>
-
     );
 }
 
