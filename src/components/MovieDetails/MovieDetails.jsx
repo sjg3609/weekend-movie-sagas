@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import { Container, Grid, Button, Card, Typography } from '@mui/material';
 
 
 function MovieDetails() {
@@ -10,7 +11,7 @@ function MovieDetails() {
     const genres = useSelector(store => store.genres);
     const { id } = useParams();
     const movie = movies.find((movie) => movie.id === Number(id));
-    
+
     console.log(id);
 
     const dispatch = useDispatch();
@@ -50,20 +51,31 @@ function MovieDetails() {
 
     return (
         <div className="movieDetails">
-            <h3>Movie Details {id}</h3>
-            <button onClick={previousPage}>Back to List</button>
-            <h4>{genres.name}</h4>
-            {
-                movies.length === 0 ? (
-                    <div>Loading...</div>
-                ) : (
-                    <div key={movie.id} >
-                        <h3>{movie.title}</h3>
-                        <img src={movie.poster} alt={movie.title} />
-                        <h4>{movie.description}</h4>
-                    </div>
-                )
-            }
+            <Container fixed>
+                <h2>Movie Details {id}</h2>
+                <Button variant="contained" size="large" onClick={previousPage}>Back to List</Button>
+                <h4>{genres.name}</h4>
+                <Grid>
+                    <Card>
+                        {
+                            movies.length === 0 ? (
+                                <div>
+                                    <h1>Loading...</h1>
+                                </div>
+                            ) : (
+                                <div key={movie.id} >
+                                    <h2>{movie.title}</h2>
+                                    <img src={movie.poster} alt={movie.title} />
+                                    <p>{movie.description}</p>
+                                </div>
+                            )
+                        }
+                    </Card>
+                </Grid>
+            </Container>
+
+
+
         </div>
     )
 }

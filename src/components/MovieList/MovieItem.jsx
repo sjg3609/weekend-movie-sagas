@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Grid, Paper } from '@mui/material';
+import { Grid, Paper, ImageList, ImageListItem } from '@mui/material';
 import { experimentalStyled as styled } from '@mui/material/styles';
 
 
