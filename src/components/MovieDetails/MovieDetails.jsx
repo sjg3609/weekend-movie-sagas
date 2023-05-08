@@ -10,6 +10,7 @@ function MovieDetails() {
     const genres = useSelector(store => store.genres);
     const { id } = useParams();
     const movie = movies.find((movie) => movie.id === Number(id));
+    
     console.log(id);
 
     const dispatch = useDispatch();
@@ -31,6 +32,9 @@ function MovieDetails() {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
 
+
+    // Code that we were trying to use during office hours and Marc was helping me with
+
     // if (movies.length != 0) {
     //     for (let i = 0; movies.length > 0; i++) {
     //         if (movies[i].id === id) {
@@ -51,10 +55,7 @@ function MovieDetails() {
             <h4>{genres.name}</h4>
             {
                 movies.length === 0 ? (
-
-                    <div>Loading..</div>
-
-
+                    <div>Loading...</div>
                 ) : (
                     <div key={movie.id} >
                         <h3>{movie.title}</h3>
