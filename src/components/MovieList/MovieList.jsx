@@ -17,7 +17,7 @@ function MovieList() {
     return (
         <main>
             <Container fixed>
-                <h1>MovieList</h1>
+                <h1>Movie List</h1>
                 <Grid container
                     columnSpacing={8}
                     rowSpacing={4}

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Container, Grid, Paper } from '@mui/material';
+import { Grid, Paper } from '@mui/material';
 import { experimentalStyled as styled } from '@mui/material/styles';
 
 
@@ -26,7 +26,7 @@ function MovieItem({ movie }) {
 
     return (
         <div className="movieItem">
-            <Grid item md={12}>
+            <Grid item xs={12}>
                 <Item>
                     <div key={movie.id} >
                         <h3>{movie.title}</h3>

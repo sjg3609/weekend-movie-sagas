@@ -66,7 +66,7 @@ const details = (state = [], action) => {
     switch (action.type) {
         case 'SET_DETAILS':
             // this will state the initial state and any time SET_DETAILS is used it will make a copy of the previous state and add another object
-            return action.payload;
+            return [...state, action.payload];
         default:
             return state;
     }

@@ -49,7 +49,7 @@ function MovieDetails() {
     }
 
     return (
-        <>
+        <div className="movieDetails">
             <h3>Movie Details {id}</h3>
             <button onClick={previousPage}>Back to List</button>
             <h4>{genres.name}</h4>
@@ -64,9 +64,7 @@ function MovieDetails() {
                     </div>
                 )
             }
-
-
-        </>
+        </div>
     )
 }
 
