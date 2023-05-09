@@ -53,8 +53,12 @@ function MovieDetails() {
             <Container fixed>
                 <h2>Movie Details {id}</h2>
                 <Button variant="contained" size="large" onClick={previousPage}>Back to List</Button>
+                <br />
+                <br />
                 <Grid>
-                    <Card>
+                    <Card sx={{
+                        padding: 4
+                    }}>
                         {
                             details.length === 0 ? (
                                 <div>
@@ -62,12 +66,14 @@ function MovieDetails() {
                                 </div>
                             ) : (
                                 <div key={detail.id} >
-                                    <h2>{detail.title}</h2>
-                                    <h3>{detail.genres}</h3>
+                                    <Typography variant="h2">{detail.title}</Typography>
+                                    <br />
+                                    <Typography variant="h5">{detail.genres}</Typography>
+                                    <br />
                                     <img src={detail.poster} alt={detail.title} />
                                     <br />
                                     <br />
-                                    <Typography>{detail.description}</Typography>
+                                    <Typography variant="h6">{detail.description}</Typography>
                                 </div>
                             )
                         }
