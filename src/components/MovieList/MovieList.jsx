@@ -28,7 +28,9 @@ function MovieList() {
                     >
                     {movies.map(movie => {
                         return (
-                            <MovieItem movie={movie} />
+                            <MovieItem movie={movie} 
+                                key={movie.id}
+                            />
                         )
                     })}
                 </Grid>

@@ -30,9 +30,9 @@ function* fetchAllMovies() {
         
 }
 
-function* movieDetails() {
+function* movieDetails(action) {
     try {
-        const details = yield axios.get(`/details`);
+        const details = yield axios.get(`/api/movie/${action.payload}`);
         yield put({ type: 'SET_DETAILS', payload: details.data });
     } catch (error) {
         console.log(`Error in movieDetails ${error}`);
@@ -66,7 +66,8 @@ const details = (state = [], action) => {
     switch (action.type) {
         case 'SET_DETAILS':
             // this will state the initial state and any time SET_DETAILS is used it will make a copy of the previous state and add another object
-            return [...state, action.payload];
+            //I do not want it to make a copy anymore
+            return action.payload;
         default:
             return state;
     }

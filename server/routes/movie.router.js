@@ -18,12 +18,14 @@ router.get('/', (req, res) => {
 
 // Commenting this out becausde I don't think it's necessary anymore
 
-router.get('/', (req, res) => {
+// it is necessary, but I need to fix it
+
+router.get('/:id', (req, res) => {
   let id = req.params.id;
-  const queryText = `SELECT * FROM movies 
+  const queryText = `SELECT movies.*, genres.name FROM movies 
                      JOIN movies_genres ON movies.id = movies_genres.movie_id
-                     JOIN genres ON movies_genres.genre_id = genres_id
-                     WHERE movies.id=$1`;
+                     JOIN genres ON movies_genres.genre_id = genres.id
+                     WHERE movies.id=$1;`;
   pool.query(queryText, [id])
     .then((result) => { res.send(result.rows); })
     .catch((err) => {
