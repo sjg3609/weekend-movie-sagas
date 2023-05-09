@@ -24,7 +24,8 @@ function MovieList() {
                     direction="row"
                     justifyContent="flex-start"
                     alignItems="center"
-                    padding={8}>
+                    padding={8}
+                    >
                     {movies.map(movie => {
                         return (
                             <MovieItem movie={movie} />

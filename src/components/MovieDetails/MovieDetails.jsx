@@ -8,9 +8,11 @@ function MovieDetails() {
     // Don't think details is a necessary reducer anymore. We can just use the genres and movies reducers to get what we
     // const details = useSelector(store => store.details);
     const movies = useSelector(store => store.movies);
-    const genres = useSelector(store => store.genres);
     const { id } = useParams();
     const movie = movies.find((movie) => movie.id === Number(id));
+    const details = useSelector(store => store.details);
+    console.log(`Show details:`, details);
+   
 
     console.log(id);
 
@@ -30,7 +32,7 @@ function MovieDetails() {
     // }
 
     useEffect(() => {
-        dispatch({ type: 'FETCH_MOVIES' });
+        dispatch({ type: 'FETCH_DETAILS' });
     }, []);
 
 
@@ -54,7 +56,6 @@ function MovieDetails() {
             <Container fixed>
                 <h2>Movie Details {id}</h2>
                 <Button variant="contained" size="large" onClick={previousPage}>Back to List</Button>
-                <h4>{genres.name}</h4>
                 <Grid>
                     <Card>
                         {
@@ -66,16 +67,15 @@ function MovieDetails() {
                                 <div key={movie.id} >
                                     <h2>{movie.title}</h2>
                                     <img src={movie.poster} alt={movie.title} />
-                                    <p>{movie.description}</p>
+                                    <br />
+                                    <br />
+                                    <Typography>{movie.description}</Typography>
                                 </div>
                             )
                         }
                     </Card>
                 </Grid>
             </Container>
-
-
-
         </div>
     )
 }

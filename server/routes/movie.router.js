@@ -18,9 +18,13 @@ router.get('/', (req, res) => {
 
 // Commenting this out becausde I don't think it's necessary anymore
 
-router.get('/description/:id', (req, res) => {
-  const queryText = 'SELECT movies.description FROM movies WHERE id=$1';
-  pool.query(queryText, [req.params.id])
+router.get('/', (req, res) => {
+  let id = req.params.id;
+  const queryText = `SELECT * FROM movies 
+                     JOIN movies_genres ON movies.id = movies_genres.movie_id
+                     JOIN genres ON movies_genres.genre_id = genres_id
+                     WHERE movies.id=$1`;
+  pool.query(queryText, [id])
     .then((result) => { res.send(result.rows); })
     .catch((err) => {
       console.log('Error completing SELECT movie query', err);
