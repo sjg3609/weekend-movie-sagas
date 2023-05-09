@@ -9,7 +9,7 @@ function MovieDetails() {
     const details = useSelector(store => store.details);
     const movies = useSelector(store => store.movies);
     const { id } = useParams();
-    const detail = details.find((movie) => movie.id === Number(id));
+    // const detail = details.find((movie) => movie.id === Number(id));
     console.log(`Show details:`, details);
 
 
@@ -45,7 +45,7 @@ function MovieDetails() {
     // }
 
     const previousPage = () => {
-        history.goBack('/');
+        history.goBack();
     }
 
     return (
@@ -65,15 +65,15 @@ function MovieDetails() {
                                     <h1>Loading...</h1>
                                 </div>
                             ) : (
-                                <div key={detail.id} >
-                                    <Typography variant="h2">{detail.title}</Typography>
+                                <div key={details.id} >
+                                    <Typography variant="h2">{details.title}</Typography>
                                     <br />
-                                    <Typography variant="h5">{detail.genres}</Typography>
+                                    <Typography variant="h5">{details.genres}</Typography>
                                     <br />
-                                    <img src={detail.poster} alt={detail.title} />
+                                    <img src={details.poster} alt={details.title} />
                                     <br />
                                     <br />
-                                    <Typography variant="h6">{detail.description}</Typography>
+                                    <Typography variant="h6">{details.description}</Typography>
                                 </div>
                             )
                         }

@@ -27,13 +27,19 @@ function* fetchAllMovies() {
     } catch {
         console.log('get all error');
     }
-        
+
 }
 
 function* movieDetails(action) {
     try {
         const details = yield axios.get(`/api/movie/${action.payload}`);
-        yield put({ type: 'SET_DETAILS', payload: details.data });
+        if (details.data.length > 0) {
+            yield put({ type: 'SET_DETAILS', payload: details.data[0] });
+        } else {
+            yield put({ type: 'SET_DETAILS', payload: {} });
+            alert('Movie not found!');
+        }
+
     } catch (error) {
         console.log(`Error in movieDetails ${error}`);
     }
@@ -62,7 +68,7 @@ const genres = (state = [], action) => {
     }
 }
 
-const details = (state = [], action) => {
+const details = (state = {}, action) => {
     switch (action.type) {
         case 'SET_DETAILS':
             // this will state the initial state and any time SET_DETAILS is used it will make a copy of the previous state and add another object
