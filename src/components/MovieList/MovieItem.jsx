@@ -21,6 +21,8 @@ function MovieItem({ movie }) {
         margin: theme.spacing(2),
         textAlign: 'center',
         color: theme.palette.text.secondary,
+        maxWidth: 180,
+        maxHeight: 380,
     }));
 
     return (

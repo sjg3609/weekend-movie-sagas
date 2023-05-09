@@ -7,6 +7,7 @@ import { Container, Grid, Button, Card, Typography } from '@mui/material';
 function MovieDetails() {
     // Don't think details is a necessary reducer anymore. We can just use the genres and movies reducers to get what we
     const details = useSelector(store => store.details);
+    const genres = useSelector(store => store.genres);
     const { id } = useParams();
     // const detail = details.find((movie) => movie.id === Number(id));
     console.log(`Show details:`, details);
@@ -23,15 +24,16 @@ function MovieDetails() {
     //     dispatch(action);
     // }
 
-    // const fetchDetails = () => {
-    //     dispatch({ type: 'FETCH_DETAILS' });
-    // }
+    const fetchGenres = () => {
+        dispatch({ type: 'FETCH_GENRES', payload: id });
+    }
 
     useEffect(() => {
+        fetchGenres();
         dispatch({ type: 'FETCH_DETAILS', payload: id });
     }, []);
 
-
+    console.log(`Selected movie genres`, genres);
     // Code that we were trying to use during office hours and Marc was helping me with
 
     // if (movies.length != 0) {
