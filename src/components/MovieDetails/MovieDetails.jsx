@@ -7,7 +7,6 @@ import { Container, Grid, Button, Card, Typography } from '@mui/material';
 function MovieDetails() {
     // Don't think details is a necessary reducer anymore. We can just use the genres and movies reducers to get what we
     const details = useSelector(store => store.details);
-    const movies = useSelector(store => store.movies);
     const { id } = useParams();
     // const detail = details.find((movie) => movie.id === Number(id));
     console.log(`Show details:`, details);
