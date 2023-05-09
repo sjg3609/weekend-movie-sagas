@@ -9,7 +9,7 @@ function MovieDetails() {
     const details = useSelector(store => store.details);
     const movies = useSelector(store => store.movies);
     const { id } = useParams();
-    const movie = movies.find((movie) => movie.id === Number(id));
+    const detail = details.find((movie) => movie.id === Number(id));
     console.log(`Show details:`, details);
 
 
@@ -56,17 +56,18 @@ function MovieDetails() {
                 <Grid>
                     <Card>
                         {
-                            movies.length === 0 ? (
+                            details.length === 0 ? (
                                 <div>
                                     <h1>Loading...</h1>
                                 </div>
                             ) : (
-                                <div key={movie.id} >
-                                    <h2>{movie.title}</h2>
-                                    <img src={movie.poster} alt={movie.title} />
+                                <div key={detail.id} >
+                                    <h2>{detail.title}</h2>
+                                    <h3>{detail.genres}</h3>
+                                    <img src={detail.poster} alt={detail.title} />
                                     <br />
                                     <br />
-                                    <Typography>{movie.description}</Typography>
+                                    <Typography>{detail.description}</Typography>
                                 </div>
                             )
                         }

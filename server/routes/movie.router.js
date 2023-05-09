@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   let id = req.params.id;
-  const queryText = `SELECT movies.*, genres.name FROM movies 
+  const queryText = `SELECT movies.*, genres.name AS "genres" FROM movies 
                      JOIN movies_genres ON movies.id = movies_genres.movie_id
                      JOIN genres ON movies_genres.genre_id = genres.id
                      WHERE movies.id=$1;`;
