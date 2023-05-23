@@ -31,7 +31,7 @@ function MovieDetails() {
     useEffect(() => {
         fetchGenres();
         dispatch({ type: 'FETCH_DETAILS', payload: id });
-    }, []);
+    }, [id]);
 
     console.log(`Selected movie genres`, genres);
     // Code that we were trying to use during office hours and Marc was helping me with
@@ -67,14 +67,19 @@ function MovieDetails() {
                                 </div>
                             ) : (
                                 <div key={details.id} >
-                                    <Typography variant="h2">{details.title}</Typography>
+                                    <Typography variant="h3">{details.title}</Typography>
                                     <br />
-                                    <Typography variant="h5">{details.genres}</Typography>
+                                    <Typography variant="h6">Genres: </Typography>
+                                    <Typography variant="h7">
+                                        {
+                                            genres.map(genre => <div>{genre.name}</div>)
+                                        }
+                                    </Typography>
                                     <br />
                                     <img src={details.poster} alt={details.title} />
                                     <br />
                                     <br />
-                                    <Typography variant="h6">{details.description}</Typography>
+                                    <Typography variant="h7">{details.description}</Typography>
                                 </div>
                             )
                         }
