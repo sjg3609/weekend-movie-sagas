@@ -19,7 +19,7 @@ function MovieList() {
             <Container fixed>
                 <h1>Movie List</h1>
                 <Grid container
-                    columnSpacing={4}
+                    columnSpacing={8}
                     rowSpacing={6}
                     direction="row"
                     justifyContent="space-evenly"

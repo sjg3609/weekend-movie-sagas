@@ -15,7 +15,6 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_DETAILS', movieDetails);
-    yield takeEvery('FETCH_GENRES', getGenres);
 }
 
 function* fetchAllMovies() {
@@ -40,20 +39,14 @@ function* movieDetails(action) {
             yield put({ type: 'SET_DETAILS', payload: {} });
             alert('Movie not found!');
         }
+        const genres = yield axios.get(`api/genre/${action.payload}`);
+        yield put({ type: 'SET_GENRES', payload: genres.data });
 
     } catch (error) {
         console.log(`Error in movieDetails ${error}`);
     }
 }
 
-function* getGenres(action) {
-    try {
-        const allGenres = yield axios.get(`/api/genre/${action.payload}`);
-        yield put({ type: 'SET_GENRES', payload: allGenres.data[0] });
-    } catch (error) {
-        console.log(`Error in getGenres: ${error}`)
-    }
-}
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
